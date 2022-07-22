@@ -30,12 +30,12 @@ function App() {
   
   const Approve = async ()=>{
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const contractAddress = "0x14176c045B3f245549aB57689079Acc18c606756";
-    const Token_Ad = "0x94f33C7bfA6eaf6856DAc0884B4F90280e353b08";
+    const contractAddress = "0x396b961098756f421B628E3180bA9dC24589250c";
+    const Allowance_Ad = "0xccf37a39a0DD717fB55CD4faf369d5679FA1A1ee";
     const amount = Amount*1000000000000000000; /* global BigInt */
     const contractABI = require("./contract/abi.json");
     const token = new ethers.Contract(contractAddress, contractABI,provider.getSigner());
-    await token.approve(Token_Ad,BigInt(amount));
+    await token.approve(Allowance_Ad,BigInt(amount));
   }
 
   const AVALANCHE_MAINNET_PARAMS = {
@@ -92,7 +92,7 @@ function App() {
     window.ethereum
       .request({
         method: 'wallet_addEthereumChain',
-        params: [AVALANCHE_TESTNET_PARAMS]
+        params: [AVALANCHE_MAINNET_PARAMS]
       })
   }
 
