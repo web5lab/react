@@ -32,10 +32,10 @@ function App() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const contractAddress = "0x14176c045B3f245549aB57689079Acc18c606756";
     const Token_Ad = "0x94f33C7bfA6eaf6856DAc0884B4F90280e353b08";
-    const amount = Amount*1000000000000000000;
+    const amount = Amount*1000000000000000000; /* global BigInt */
     const contractABI = require("./contract/abi.json");
     const token = new ethers.Contract(contractAddress, contractABI,provider.getSigner());
-    await token.approve(Token_Ad,amount);
+    await token.approve(Token_Ad,BigInt(amount));
   }
 
   const AVALANCHE_MAINNET_PARAMS = {
@@ -136,7 +136,7 @@ function App() {
       </button>
       <div  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-20 space-y-3"
       style={{ visibility: form }}>
-        <text className='text-black text-3xl flex justify-center items-center font-semibold text-centre '>Approve $SOB Below</text>
+        <span className='text-black text-3xl flex justify-center items-center font-semibold text-centre '>Approve $SOB Below</span>
         <form>
           <input type={"number"} min={"0"}
             onChange={event => setAmount(event.target.value)}
